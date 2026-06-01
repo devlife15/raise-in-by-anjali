@@ -5,6 +5,7 @@ import {
   Plus_Jakarta_Sans,
   Instrument_Serif,
   Homemade_Apple,
+  Inter,
 } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +17,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const serifDisplay = Cormorant_Garamond({
@@ -58,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${serifDisplay.variable} ${instrumentSerif.variable} ${homemadeApple.variable} ${sansClean.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${serifDisplay.variable} ${instrumentSerif.variable} ${inter.variable} ${homemadeApple.variable} ${sansClean.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

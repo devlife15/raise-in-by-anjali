@@ -6,13 +6,19 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { products } from "@/data/products";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero slider images, replace with real product shots
-const HERO_IMAGES = ["/Anjali.jpg", "/anju.jpg", "/Anjali.jpg", "/anju.jpg"];
+const HERO_IMAGES = [
+  "/Anjali.jpg",
+  "/anju.jpg",
+  "/ag.png",
+  "/AJ.png",
+  "/ajfav.png",
+  "/ajglass.png",
+];
 
-// Marquee content
 const MARQUEE_ITEMS = [
   "Marriage Garland Preservation",
   "Wall Clocks",
@@ -26,7 +32,6 @@ const MARQUEE_ITEMS = [
   "Candles & Lights",
 ];
 
-// Placeholder testimonials
 const TESTIMONIALS = [
   {
     id: 1,
@@ -72,7 +77,6 @@ const TESTIMONIALS = [
   },
 ];
 
-// Featured: pick 4 products manually by id
 const FEATURED_IDS = ["g1", "c1", "ch1", "p1"];
 const featuredProducts = products.filter((p) => FEATURED_IDS.includes(p.id));
 
@@ -83,13 +87,11 @@ export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const featuredRef = useRef<HTMLDivElement>(null);
   const testimonialsTrackRef = useRef<HTMLDivElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
   const slideRefs = useRef<HTMLDivElement[]>([]);
   const sliderIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const testimonialsAnimRef = useRef<gsap.core.Tween | null>(null);
 
-  // Hero slide entrance
+  // Hero entrance
   useEffect(() => {
     gsap.fromTo(
       ".hero-headline",
@@ -130,19 +132,12 @@ export default function HomePage() {
 
     gsap.set(incoming, { x: "100%", zIndex: 2 });
     gsap.set(outgoing, { zIndex: 1 });
-
-    gsap.to(incoming, {
-      x: "0%",
-      duration: 1,
-      ease: "power3.inOut",
-    });
+    gsap.to(incoming, { x: "0%", duration: 1, ease: "power3.inOut" });
     gsap.to(outgoing, {
       x: "-30%",
       duration: 1,
       ease: "power3.inOut",
-      onComplete: () => {
-        gsap.set(outgoing, { x: "0%", zIndex: 0 });
-      },
+      onComplete: () => gsap.set(outgoing, { x: "0%", zIndex: 0 }),
     });
   }, [currentSlide, prevSlide]);
 
@@ -164,7 +159,6 @@ export default function HomePage() {
           },
         },
       );
-
       gsap.fromTo(
         ".featured-card",
         { y: 40, opacity: 0 },
@@ -182,7 +176,6 @@ export default function HomePage() {
         },
       );
     }, featuredRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -213,7 +206,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: "#FAF7F2" }}>
-      {/* NAVBAR */}
       <Navbar />
 
       {/* HERO */}
@@ -230,10 +222,7 @@ export default function HomePage() {
                 if (el) slideRefs.current[idx] = el;
               }}
               className="absolute inset-0"
-              style={{
-                zIndex: idx === 0 ? 1 : 0,
-                transform: "translateX(0%)",
-              }}
+              style={{ zIndex: idx === 0 ? 1 : 0, transform: "translateX(0%)" }}
             >
               <img
                 src={src}
@@ -241,8 +230,7 @@ export default function HomePage() {
                 className="h-full w-full object-cover"
                 draggable={false}
               />
-              {/* Subtle warm overlay */}
-              <div className="absolute inset-0 bg-neutral-900/10" />
+              <div className="absolute inset-0 bg-[#6A1040]/10" />
             </div>
           ))}
 
@@ -255,9 +243,7 @@ export default function HomePage() {
                   setPrevSlide(currentSlide);
                   setCurrentSlide(idx);
                 }}
-                className={`h-px transition-all duration-500 ${
-                  idx === currentSlide ? "w-8 bg-white" : "w-3 bg-white/40"
-                }`}
+                className={`h-px transition-all duration-500 ${idx === currentSlide ? "w-8 bg-white" : "w-3 bg-white/40"}`}
               />
             ))}
           </div>
@@ -274,21 +260,37 @@ export default function HomePage() {
 
         {/* Right: text content */}
         <div className="relative w-1/2 h-full flex flex-col justify-center px-[6vw] pt-20">
-          <p className="hero-sub font-sans text-[10px] tracking-[0.35em] text-neutral-400 uppercase mb-6 opacity-0">
+          <p
+            className="hero-sub font-inter text-[10px] tracking-[0.35em] uppercase mb-6 opacity-0"
+            style={{ color: "#9C4D7A" }}
+          >
             Handmade Resin Art
           </p>
 
-          <h1 className="hero-headline font-serif text-[clamp(2.8rem,5vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-neutral-900 mb-6 opacity-0">
+          <h1
+            className="hero-headline text-[clamp(2.8rem,5vw,5.5rem)] font-bold leading-[0.95] tracking-tight mb-6 opacity-0"
+            style={{ fontFamily: "var(--font-inter)", color: "#6A1040" }}
+          >
             Preserved
             <br />
-            <span className="italic font-instrument-serif font-normal">
-              in Resin.
-            </span>
+            in Resin
             <br />
-            Kept Forever.
+            <span
+              style={{
+                fontFamily: "var(--font-instrument-serif)",
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: "#9C4D7A",
+              }}
+            >
+              Kept Forever.
+            </span>
           </h1>
 
-          <p className="hero-sub font-sans text-sm text-neutral-500 leading-relaxed max-w-xs mb-10 opacity-0">
+          <p
+            className="hero-sub font-sans text-sm leading-relaxed max-w-xs mb-10 opacity-0"
+            style={{ color: "#4A1030", opacity: 0.7 }}
+          >
             Custom resin art and preservation pieces, handcrafted to hold your
             most precious memories.
           </p>
@@ -296,42 +298,66 @@ export default function HomePage() {
           <div className="hero-ctas flex items-center gap-4 opacity-0">
             <Link
               href="/categories"
-              className="font-sans text-[11px] tracking-[0.15em] uppercase bg-neutral-900 text-[#FAF7F2] px-7 py-3.5 hover:bg-neutral-700 transition-colors duration-300"
+              className="font-sans text-[11px] tracking-[0.15em] uppercase px-7 py-3.5 transition-colors duration-300"
+              style={{ backgroundColor: "#6A1040", color: "#FAF7F2" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "#9C4D7A")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "#6A1040")
+              }
             >
               Explore Collection
             </Link>
             <a
-              href="https://wa.me/919999999999?text=Hi, I'd like to place a custom order"
+              href="https://wa.me/918167356807?text=Hi, I'd like to place a custom order"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[11px] tracking-[0.15em] uppercase text-neutral-900 border border-neutral-900 px-7 py-3.5 hover:bg-neutral-900 hover:text-[#FAF7F2] transition-all duration-300"
+              className="font-sans text-[11px] tracking-[0.15em] uppercase px-7 py-3.5 border transition-all duration-300"
+              style={{
+                borderColor: "#6A1040",
+                color: "#6A1040",
+                backgroundColor: "transparent",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#6A1040";
+                e.currentTarget.style.color = "#FAF7F2";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = "#6A1040";
+              }}
             >
               Custom Order
             </a>
           </div>
 
-          {/* Slide count */}
-          <div className="absolute bottom-8 right-[6vw] font-sans text-[10px] tracking-[0.2em] text-neutral-400">
+          <div
+            className="absolute bottom-8 right-[6vw] font-sans text-[10px] tracking-[0.2em]"
+            style={{ color: "#9C4D7A" }}
+          >
             {String(currentSlide + 1).padStart(2, "0")} /{" "}
             {String(HERO_IMAGES.length).padStart(2, "0")}
           </div>
         </div>
 
-        {/* Marquee strip pinned at hero bottom */}
+        {/* Marquee strip */}
         <div
-          ref={marqueeRef}
           className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden py-3"
-          style={{ backgroundColor: "#0A0A0A" }}
+          style={{ backgroundColor: "#3D0A25" }}
         >
           <div className="flex whitespace-nowrap animate-marquee">
             {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map(
               (item, idx) => (
                 <span
                   key={idx}
-                  className="font-sans text-[10px] tracking-[0.25em] uppercase text-neutral-400 mx-6"
+                  className="font-sans text-[10px] tracking-[0.25em] uppercase mx-6"
+                  style={{ color: "#F5D5E5" }}
                 >
                   {item}
-                  <span className="mx-6 text-neutral-600">✦</span>
+                  <span className="mx-6" style={{ color: "#9C4D7A" }}>
+                    ✦
+                  </span>
                 </span>
               ),
             )}
@@ -343,22 +369,33 @@ export default function HomePage() {
       <section ref={featuredRef} className="px-[5vw] py-28">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="featured-heading font-sans text-[10px] tracking-[0.3em] text-neutral-400 uppercase mb-3 opacity-0">
+            <p
+              className="featured-heading font-sans text-[10px] tracking-[0.3em] uppercase mb-3 opacity-0"
+              style={{ color: "#9C4D7A" }}
+            >
               Handpicked
             </p>
-            <h2 className="featured-heading font-instrument-serif italic text-[clamp(2rem,4vw,4rem)] tracking-tight text-neutral-900 opacity-0">
+            <h2
+              className="featured-heading text-[clamp(2rem,4vw,4rem)] italic tracking-tight opacity-0"
+              style={{
+                fontFamily: "var(--font-instrument-serif)",
+                color: "#6A1040",
+              }}
+            >
               Featured Pieces
             </h2>
           </div>
           <Link
             href="/products"
-            className="font-sans text-[11px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-900 transition-colors border-b border-neutral-300 pb-px mb-1"
+            className="font-sans text-[11px] tracking-[0.2em] uppercase border-b pb-px mb-1 transition-colors"
+            style={{ color: "#9C4D7A", borderColor: "#D4B8C5" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6A1040")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#9C4D7A")}
           >
             View All
           </Link>
         </div>
 
-        {/* Cards: overflow scroll, right edge cut off */}
         <div className="flex gap-5 overflow-x-auto pb-4 -mr-[5vw] pr-[5vw] scrollbar-none">
           {featuredProducts.map((product) => (
             <Link
@@ -367,8 +404,10 @@ export default function HomePage() {
               className="featured-card group shrink-0 opacity-0"
               style={{ width: "clamp(240px, 28vw, 380px)" }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-[4/5] bg-neutral-100 mb-4">
+              <div
+                className="relative overflow-hidden aspect-[4/5] mb-4"
+                style={{ backgroundColor: "#FAF7F2" }}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
@@ -377,23 +416,43 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Info */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-sans text-[9px] tracking-[0.25em] text-neutral-400 uppercase mb-1.5">
+                  <p
+                    className="font-sans text-[9px] tracking-[0.25em] uppercase mb-1.5"
+                    style={{ color: "#9C4D7A" }}
+                  >
                     {product.category.replace(/-/g, " ")}
                   </p>
-                  <h3 className="font-serif text-base font-medium text-neutral-900 leading-snug group-hover:text-neutral-500 transition-colors duration-300">
+                  <h3
+                    className="text-base font-medium leading-snug transition-colors duration-300"
+                    style={{
+                      fontFamily: "var(--font-instrument-serif)",
+                      color: "#6A1040",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#9C4D7A")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "#6A1040")
+                    }
+                  >
                     {product.name}
                   </h3>
                 </div>
                 <div className="shrink-0 mt-0.5">
                   {product.price !== null ? (
-                    <span className="font-sans text-sm font-medium text-neutral-900">
+                    <span
+                      className="font-sans text-sm font-medium"
+                      style={{ color: "#6A1040" }}
+                    >
                       ₹{product.price.toLocaleString("en-IN")}
                     </span>
                   ) : (
-                    <span className="font-sans text-[9px] tracking-[0.1em] uppercase text-neutral-400 border border-neutral-200 px-2 py-1 rounded-full">
+                    <span
+                      className="font-sans text-[9px] tracking-[0.1em] uppercase border px-2 py-1 rounded-full"
+                      style={{ borderColor: "#D4B8C5", color: "#9C4D7A" }}
+                    >
                       Contact
                     </span>
                   )}
@@ -407,39 +466,62 @@ export default function HomePage() {
       {/* TESTIMONIALS */}
       <section
         className="py-24 overflow-hidden"
-        style={{ backgroundColor: "#F2EDE6" }}
+        style={{ backgroundColor: "#F5D5E5" }}
       >
         <div className="px-[5vw] mb-12">
-          <p className="font-sans text-[10px] tracking-[0.3em] text-neutral-400 uppercase mb-3">
+          <p
+            className="font-sans text-[10px] tracking-[0.3em] uppercase mb-3"
+            style={{ color: "#9C4D7A" }}
+          >
             Kind Words
           </p>
-          <h2 className="font-instrument-serif text-[clamp(2rem,4vw,4rem)] italic tracking-tight text-neutral-900">
+          <h2
+            className="text-[clamp(2rem,4vw,4rem)] italic tracking-tight"
+            style={{
+              fontFamily: "var(--font-instrument-serif)",
+              color: "#6A1040",
+            }}
+          >
             What Customers Say
           </h2>
         </div>
 
-        {/* Auto scroll track */}
         <div
           className="relative overflow-hidden"
           onMouseEnter={pauseTestimonials}
           onMouseLeave={resumeTestimonials}
         >
           <div ref={testimonialsTrackRef} className="flex gap-5 w-max pl-[5vw]">
-            {/* Duplicate for seamless loop */}
             {[...TESTIMONIALS, ...TESTIMONIALS].map((t, idx) => (
               <div
                 key={idx}
-                className="shrink-0 bg-[#FAF7F2] border border-neutral-200/60 p-8 rounded-sm"
-                style={{ width: "clamp(280px, 30vw, 420px)" }}
+                className="shrink-0 border p-8 rounded-sm"
+                style={{
+                  width: "clamp(280px, 30vw, 420px)",
+                  backgroundColor: "#FEF0F5",
+                  borderColor: "#D4B8C5",
+                }}
               >
-                <p className="font-serif text-base leading-relaxed text-neutral-700 mb-6 italic">
+                <p
+                  className="text-base leading-relaxed mb-6 italic"
+                  style={{
+                    fontFamily: "var(--font-instrument-serif)",
+                    color: "#4A1030",
+                  }}
+                >
                   "{t.quote}"
                 </p>
                 <div>
-                  <p className="font-sans text-[11px] font-medium tracking-[0.1em] text-neutral-900 uppercase">
+                  <p
+                    className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase"
+                    style={{ color: "#6A1040" }}
+                  >
                     {t.name}
                   </p>
-                  <p className="font-sans text-[10px] tracking-[0.15em] text-neutral-400 uppercase mt-0.5">
+                  <p
+                    className="font-sans text-[10px] tracking-[0.15em] uppercase mt-0.5"
+                    style={{ color: "#9C4D7A" }}
+                  >
                     {t.item}
                   </p>
                 </div>
@@ -448,6 +530,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

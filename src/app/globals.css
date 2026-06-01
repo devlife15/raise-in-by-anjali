@@ -5,6 +5,8 @@
   --font-sans: var(--font-sans), sans-serif;
   --font-instrument-serif: var(--font-instrument-serif);
   --font-homemade-apple: var(--font-homemade-apple);
+  --font-inter: var(--font-inter);
+  --font-geist-sans: var(--font-geist-sans);
 }
 
 @keyframes marquee {

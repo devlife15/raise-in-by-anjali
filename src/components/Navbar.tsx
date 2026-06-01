@@ -21,8 +21,8 @@ export default function Navbar() {
       <nav
         className={`w-full flex items-center justify-between px-6 py-2.5 rounded-lg transition-all duration-500 ${
           scrolled
-            ? "bg-[#6E2C3E]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(110,44,62,0.2)] border border-[#8B3A50]/40"
-            : "bg-[#6E2C3E]/80 backdrop-blur-sm shadow-[0_2px_12px_rgba(110,44,62,0.15)] border border-[#8B3A50]/30"
+            ? "bg-[#6A1040]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(110,44,62,0.2)] border border-[#8B3A50]/40"
+            : "bg-[#6A1040]/80 backdrop-blur-sm shadow-[0_2px_12px_rgba(110,44,62,0.15)] border border-[#8B3A50]/30"
         }`}
       >
         {/* Brand */}
@@ -41,19 +41,19 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           <Link
             href="/categories"
-            className="font-sans text-[11px] tracking-[0.2em] text-[#FAF7F2]/70 uppercase hover:text-[#FAF7F2] transition-colors duration-200"
+            className="font-inter text-[12px] font-medium text-[#FAF7F2]/70 hover:text-[#FAF7F2] transition-colors duration-200"
           >
             Categories
           </Link>
           <Link
             href="/products"
-            className="font-sans text-[11px] tracking-[0.2em] text-[#FAF7F2]/70 uppercase hover:text-[#FAF7F2] transition-colors duration-200"
+            className="font-inter text-[12px] font-medium text-[#FAF7F2]/70  hover:text-[#FAF7F2] transition-colors duration-200"
           >
             Products
           </Link>
           <Link
             href="/about"
-            className="font-sans text-[11px] tracking-[0.2em] text-[#FAF7F2]/70 uppercase hover:text-[#FAF7F2] transition-colors duration-200"
+            className="font-inter text-[12px] font-medium text-[#FAF7F2]/70  hover:text-[#FAF7F2] transition-colors duration-200"
           >
             About
           </Link>
@@ -61,10 +61,10 @@ export default function Navbar() {
 
         {/* WhatsApp CTA */}
         <a
-          href="https://wa.me/919999999999?text=Hi, I'd like to know more about your products"
+          href="https://wa.me/918167356807?text=Hi, I'd like to know more about your products"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-sans text-[11px] tracking-[0.15em] uppercase bg-[#FAF7F2] text-[#6E2C3E] px-5 py-2.5 rounded-full hover:bg-[#F5E6EA] transition-colors duration-300 shrink-0"
+          className="font-inter text-[12px] font-medium bg-[#FAF7F2] text-[#6E2C3E] px-5 py-2.5 rounded-full hover:bg-[#F5E6EA] transition-colors duration-300 shrink-0"
         >
           WhatsApp
         </a>

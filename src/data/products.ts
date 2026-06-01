@@ -22,7 +22,7 @@ export const products: Product[] = [
     name: "Shadow Box Garland",
     slug: "shadow-box-garland",
     category: "marriage-garland-preservation",
-    image: "/anju.jpg",
+    image: "/ajfav.png",
     price: null,
   },
   {
@@ -74,7 +74,7 @@ export const products: Product[] = [
     name: "Gold Frame Cheque Block",
     slug: "gold-frame-cheque-block",
     category: "first-salary-cheque",
-    image: "/anju.jpg",
+    image: "/ajfav.png",
     price: 1299,
   },
   {
