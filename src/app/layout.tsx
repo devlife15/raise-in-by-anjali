@@ -4,6 +4,7 @@ import {
   Cormorant_Garamond,
   Plus_Jakarta_Sans,
   Instrument_Serif,
+  Homemade_Apple,
 } from "next/font/google";
 import "./globals.css";
 
@@ -37,6 +38,12 @@ const sansClean = Plus_Jakarta_Sans({
   weight: ["400", "500", "600"],
 });
 
+const homemadeApple = Homemade_Apple({
+  subsets: ["latin"],
+  variable: "--font-homemade-apple",
+  weight: "400",
+});
+
 export const metadata = {
   title: "Raise-In | Premium Handmade Resin Art",
   description:
@@ -51,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${serifDisplay.variable} ${instrumentSerif.variable} ${sansClean.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${serifDisplay.variable} ${instrumentSerif.variable} ${homemadeApple.variable} ${sansClean.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

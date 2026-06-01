@@ -1,11 +1,4 @@
-@import "tailwindcss";
-
-@theme {
-  --font-serif: var(--font-serif), serif;
-  --font-sans: var(--font-sans), sans-serif;
-  --font-instrument-serif: var(--font-instrument-serif);
-  --font-homemade-apple: var(--font-homemade-apple);
-}
+/* Add these to your existing globals.css */
 
 @keyframes marquee {
   from {
