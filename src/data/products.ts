@@ -2,9 +2,10 @@ export interface Product {
   id: string;
   name: string;
   slug: string;
-  category: string; // matches category slug from categories.ts
+  category: string;
   image: string;
-  price: number | null; // null = "Contact for pricing"
+  price: number | null;
+  occasions?: string[];
 }
 
 export const products: Product[] = [
@@ -14,7 +15,7 @@ export const products: Product[] = [
     name: "Classic Garland Frame",
     slug: "classic-garland-frame",
     category: "marriage-garland-preservation",
-    image: "/products.png",
+    image: "/ajfav.png",
     price: 2499,
   },
   {
@@ -22,7 +23,7 @@ export const products: Product[] = [
     name: "Shadow Box Garland",
     slug: "shadow-box-garland",
     category: "marriage-garland-preservation",
-    image: "/ajfav.png",
+    image: "/anju.jpg",
     price: null,
   },
   {
@@ -37,11 +38,12 @@ export const products: Product[] = [
   // Wall Clocks
   {
     id: "c1",
-    name: "7-Horse Resin Wall Clock",
-    slug: "horse-resin-wall-lock",
+    name: "Floral Resin Clock",
+    slug: "floral-resin-clock",
     category: "wall-clocks",
-    image: "/products.png",
+    image: "/ajfav.png",
     price: 1899,
+    occasions: ["new-year"],
   },
   {
     id: "c2",
@@ -50,6 +52,7 @@ export const products: Product[] = [
     category: "wall-clocks",
     image: "/Anjali.jpg",
     price: 2199,
+    occasions: ["new-year"],
   },
   {
     id: "c3",
@@ -58,6 +61,7 @@ export const products: Product[] = [
     category: "wall-clocks",
     image: "/anju.jpg",
     price: null,
+    occasions: ["new-year"],
   },
   {
     id: "c4",
@@ -66,6 +70,7 @@ export const products: Product[] = [
     category: "wall-clocks",
     image: "/Anjali.jpg",
     price: 1699,
+    occasions: ["new-year"],
   },
 
   // First Salary Cheque
@@ -74,7 +79,7 @@ export const products: Product[] = [
     name: "Gold Frame Cheque Block",
     slug: "gold-frame-cheque-block",
     category: "first-salary-cheque",
-    image: "/ajfav.png",
+    image: "/anju.jpg",
     price: 1299,
   },
   {
@@ -102,6 +107,7 @@ export const products: Product[] = [
     category: "pooja-plates",
     image: "/Anjali.jpg",
     price: 1499,
+    occasions: ["diwali"],
   },
   {
     id: "p2",
@@ -110,6 +116,7 @@ export const products: Product[] = [
     category: "pooja-plates",
     image: "/anju.jpg",
     price: 1799,
+    occasions: ["diwali"],
   },
   {
     id: "p3",
@@ -118,6 +125,7 @@ export const products: Product[] = [
     category: "pooja-plates",
     image: "/Anjali.jpg",
     price: null,
+    occasions: ["diwali"],
   },
   {
     id: "p4",
@@ -126,6 +134,7 @@ export const products: Product[] = [
     category: "pooja-plates",
     image: "/anju.jpg",
     price: 2099,
+    occasions: ["diwali"],
   },
 
   // Candles & Lights
@@ -136,6 +145,7 @@ export const products: Product[] = [
     category: "candles-lights",
     image: "/Anjali.jpg",
     price: 699,
+    occasions: ["diwali", "christmas"],
   },
   {
     id: "l2",
@@ -144,6 +154,7 @@ export const products: Product[] = [
     category: "candles-lights",
     image: "/anju.jpg",
     price: 499,
+    occasions: ["diwali", "christmas"],
   },
   {
     id: "l3",
@@ -152,6 +163,7 @@ export const products: Product[] = [
     category: "candles-lights",
     image: "/Anjali.jpg",
     price: null,
+    occasions: ["christmas"],
   },
 
   // Photo Frames
@@ -196,21 +208,24 @@ export const products: Product[] = [
     category: "keychains",
     image: "/anju.jpg",
     price: 349,
+    occasions: ["rakhi"],
   },
   {
     id: "k2",
     name: "Floral Token",
     slug: "floral-token",
     category: "keychains",
-    image: "/Anjali.jpg",
+    image: "/ajfav.png",
     price: 299,
+    occasions: ["rakhi"],
   },
   {
     id: "k3",
     name: "Galaxy Resin Charm",
     slug: "galaxy-resin-charm",
     category: "keychains",
-    image: "/anju.jpg",
+    image: "/ajglass.png",
     price: 399,
+    occasions: ["rakhi"],
   },
 ];

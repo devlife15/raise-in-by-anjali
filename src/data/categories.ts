@@ -8,7 +8,7 @@ export interface Category {
 export const categories: Category[] = [
   {
     id: "1",
-    name: "Marriage Garland Preservation",
+    name: "Varmala & Jaimala Preservation",
     slug: "marriage-garland-preservation",
     image: "/AJ.png",
   },
@@ -20,14 +20,14 @@ export const categories: Category[] = [
   },
   {
     id: "3",
-    name: "First Salary Cheque",
+    name: "Salary Cheque Preservation",
     slug: "first-salary-cheque",
     image: "/anju.jpg",
   },
   {
     id: "4",
-    name: "Pooja Plates",
-    slug: "pooja-plates",
+    name: "Pooja Thalis",
+    slug: "pooja-thalis",
     image: "/Anjali.jpg",
   },
   {
